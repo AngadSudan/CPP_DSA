@@ -8,13 +8,14 @@ using namespace std;
 void Bank::showMenu(){
     int choice;
     do{
-        cout << "\n ==== Welcome to CBI Bank ====\n";
+        cout << "\n ==== Welcome to Random Bank ====\n";
         cout << "1. Create Account\n";
         cout << "2. View Account Details\n";
         cout << "3. Deposit\n";
         cout << "4. Withdraw\n";
-        cout << "5. Exit\n";
-        cout << "5. Enter your choice\n";
+        cout << "5. Delete Account\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice\n";
         cin >> choice;
         switch (choice){
             case 1:
@@ -30,9 +31,11 @@ void Bank::showMenu(){
                 withdrawMoney();
                 break;
             case 5:
-                cout << "Thanku for using CBI bank!\n";
+                deleteAccount();
                 break;
-
+            case 6:
+                cout << "Thanku for using Random bank!\n";
+                break;
             default:
                 cout << "Invalid Option. Try again.\n";break;
         }
@@ -121,6 +124,15 @@ void Bank::deleteAccount(){
     Account* account = Bank::accounts[AccountNumber]; 
     account->~Account();
     
+    delete account;
     Bank::accounts[AccountNumber] == NULL;
     return ;
+}
+
+Bank::~Bank(){
+    for(Account* acc: accounts){
+        delete acc;
+    }
+    accounts.clear();
+    cout<<"Bank Gone bankrupt" << endl;
 }

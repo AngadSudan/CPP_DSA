@@ -24,9 +24,7 @@ class Bank {
         void depositMoney();
         void withdrawMoney();
         void deleteAccount();
-        ~Bank(){
-            cout<< "bank gone bankrupt"<< endl;
-        }
+        ~Bank();
 };  
 
 
